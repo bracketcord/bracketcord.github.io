@@ -20,7 +20,8 @@
         document.getElementById("mainpage").src = document.getElementById("mainpage").src + "?room=" + roomurl;
     
         document.getElementById("mainpage").addEventListener("load", function () {
-            document.location = document.getElementById("mainpage").contentWindow.location.toString().replace("https://local.bracketproto.com:8433/", "https://bracketcord.github.io/");
+            var currenturl = document.getElementById("mainpage").contentWindow.location.href;
+            document.location = currenturl.replace("https://local.bracketproto.com:8433/", "https://bracketcord.github.io/");
         });
     }
 </script>
