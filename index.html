@@ -17,7 +17,7 @@
     const urlparam = new URLSearchParams(window.location.search);
     const roomurl = urlparam.get("room");
     if(roomurl){
-        document.getElementById("mainpage").addEventListener("unload", function() {
+        document.getElementById("mainpage").addEventListener("beforeunload", function() {
         var newUrl = "https://bracketcord.github.io/";
         window.location.href = newUrl;
         });
