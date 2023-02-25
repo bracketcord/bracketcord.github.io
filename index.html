@@ -19,7 +19,7 @@
     if(roomurl){
         document.getElementById("mainpage").src = document.getElementById("mainpage").src + "?room=" + roomurl;
     
-        document.getElementById("mainpage").addEventListener("load", function () {
+        document.getElementById("mainpage").addEventListener("unload", function () {
             document.location = "https://bracketcord.github.io/";
         });
     }
