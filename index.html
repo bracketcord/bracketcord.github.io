@@ -4,7 +4,13 @@
         <meta content="BracketCord" property="og:title" />
         <meta content="Join the chat!" property="og:description" />
         <meta content="#00fffb" data-react-helmet="true" name="theme-color" />
-
+        <script>
+            const urlparam = new URLSearchParams(window.location.search);
+            const roomurl = urlparam.get("room");
+            if(roomurl){
+            document.getElementById("mainpage").src = document.getElementById("mainpage").src + "?room=" + roomurl;
+            }
+        </script>
         <style>
             body{
                 margin: 0;
@@ -13,6 +19,6 @@
         </style>
     </head>
 <body>
-<iframe allowfullscreen="true" src="https://local.bracketproto.com:8443/" style="border: 0; width: 100%; height: 100%">Your browser doesn't support iFrames.</iframe>
+<iframe id="mainpage" allowfullscreen="true" src="https://local.bracketproto.com:8443/" style="border: 0; width: 100%; height: 100%">Your browser doesn't support iFrames.</iframe>
 </body>
 </html>
