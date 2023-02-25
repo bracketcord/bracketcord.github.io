@@ -18,11 +18,6 @@
     const roomurl = urlparam.get("room");
     
     if(roomurl){
-        document.getElementById("mainpage").addEventListener("load", function() {
-        document.getElementById("mainpage").addEventListener("beforeunload", function() {
-        window.location.href = "https://bracketcord.github.io/";
-        });
-        });
         document.getElementById("mainpage").src = document.getElementById("mainpage").src + "?room=" + roomurl;
     }
 </script>
