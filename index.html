@@ -16,10 +16,11 @@
 <script>
     const urlparam = new URLSearchParams(window.location.search);
     const roomurl = urlparam.get("room");
-    if(roomurl){/*
-        document.getElementById("mainpage").contentWindow.unload = function() {
-            window.location.href = "https://bracketcord.github.io/";
-        };*/
+    if(roomurl){
+        document.getElementById("mainpage").addEventListener("load", function() {
+        var newUrl = "https://bracketcord.github.io/";
+        window.location.href = newUrl;
+        });
         document.getElementById("mainpage").src = document.getElementById("mainpage").src + "?room=" + roomurl;
     }
 </script>
