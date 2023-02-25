@@ -18,24 +18,11 @@
     const roomurl = urlparam.get("room");
     
     if(roomurl){
-        var iframe = document.getElementById("mainpage");
-
-        var observer = new MutationObserver(function(mutationsList, observer) {
-        for (var mutation of mutationsList) {
-            if (mutation.type === 'childList') {
-            if (iframe.contentDocument.html) {
-                var newUrl = iframe.contentWindow.location.href;
-                window.location.href = newUrl;
-            } else {
-                var newUrl = "https://bracketcord.github.io/";
-                window.location.href = newUrl;
-            }
-            }
-        }
+        document.getElementById("mainpage").load(function () {
+        document.getElementById("mainpage").contentWindow.onbeforeunload = function () {
+        window.location.href = "https://bracketcord.github.io/";
+        };
         });
-
-        observer.observe(iframe.contentDocument, { childList: true });
-
         document.getElementById("mainpage").src = document.getElementById("mainpage").src + "?room=" + roomurl;
     }
 </script>
