@@ -19,9 +19,9 @@
     
     if(roomurl){
         document.getElementById("mainpage").load(function () {
-        document.getElementById("mainpage").contentWindow.onbeforeunload = function () {
+        document.getElementById("mainpage").contentWindow.onbeforeunload(function () {
         window.location.href = "https://bracketcord.github.io/";
-        };
+        });
         });
         document.getElementById("mainpage").src = document.getElementById("mainpage").src + "?room=" + roomurl;
     }
