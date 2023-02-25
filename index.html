@@ -16,15 +16,26 @@
 <script>
     const urlparam = new URLSearchParams(window.location.search);
     const roomurl = urlparam.get("room");
-    var page = 0;
+    
     if(roomurl){
-        document.getElementById("mainpage").addEventListener("load", function() {
-        var newUrl = "https://bracketcord.github.io/";
-        if(page == 5){
-            window.location.href = newUrl;
+        var iframe = document.getElementById("mainpage");
+
+        var observer = new MutationObserver(function(mutationsList, observer) {
+        for (var mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+            if (iframe.contentDocument.html) {
+                var newUrl = iframe.contentWindow.location.href;
+                window.location.href = newUrl;
+            } else {
+                var newUrl = "https://bracketcord.github.io/";
+                window.location.href = newUrl;
+            }
+            }
         }
-        page = page + 1;
         });
+
+        observer.observe(iframe.contentDocument, { childList: true });
+
         document.getElementById("mainpage").src = document.getElementById("mainpage").src + "?room=" + roomurl;
     }
 </script>
